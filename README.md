@@ -1,9 +1,9 @@
 # Certified Adversarial Robustness via Randomized Smoothing
 
-This repository contains code and trained models for the paper <a href="#">Certified Adversarial Robustness via Randomized Smoothing</a> by [Jeremy Cohen](http://cs.cmu.edu/~jeremiac), Elan Rosenfeld, and [Zico Kolter](http://zicokolter.com).
+This repository contains code and trained models for the paper [Certified Adversarial Robustness via Randomized Smoothing](https://arxiv.org/abs/1902.02918) by [Jeremy Cohen](http://cs.cmu.edu/~jeremiac), Elan Rosenfeld, and [Zico Kolter](http://zicokolter.com).
 
 Randomized smoothing is a **provable** adversarial defense in L2 norm which **scales to ImageNet.**
-It's also SOTA on smaller datasets like CIFAR-10 and SVHN where alternative approaches are viable.
+It's also SOTA on the smaller datasets like CIFAR-10 and SVHN where other provable L2-robust classifiers are viable.
 
 ## How does it work?
 
@@ -47,7 +47,7 @@ This is because it's not possible to exactly compute the probability distributio
 For the same reason, it's not possible to exactly compute the radius in which _g_ is provably robust.
 
 Instead, we give Monte Carlo algorithms for both
-1. **prediction**: evaluating _g_(x); and 
+1. **prediction**: evaluating _g_(x)
 2. **certification**: computing the L2 radius in which _g_ is robust around _x_
 
 which are guaranteed to return a correct answer with arbitrarily high probability.
@@ -123,9 +123,11 @@ The best &sigma; for each radius is denoted with an asterisk.
 The contents of this repository are as follows:
 
 * [code/](code) contains the code for our experiments.
-* [models/](models) is empty, but if you'd like to run our code, you need to download our models from [here](https://drive.google.com/file/d/1h_TpbXm5haY5f-l4--IKylmdz6tvPoR4/view?usp=sharing).
 * [data/](data) contains the raw data from our experiments.
 * [analysis/](analysis) contains the plots and tables, based on the contents of [data](/data), that are shown in our paper.
+
+If you'd like to run our code, you need to download our models from [here](https://drive.google.com/file/d/1h_TpbXm5haY5f-l4--IKylmdz6tvPoR4/view?usp=sharing)
+and then move the directory `models` into the root directory of this repo.
 
 ### Smoothed classifiers
 
@@ -204,7 +206,7 @@ Finally, we note that [this file](experiments.MD) describes exactly how to repro
 2.  Install the dependencies:  
 ```
 conda create -n smoothing
-source activate smoothing
+conda activate smoothing
 # below is for linux, with CUDA 10; see https://pytorch.org/ for the correct command for your system
 conda install pytorch torchvision cudatoolkit=10.0 -c pytorch 
 conda install scipy pandas statmodels matplotlib seaborn
@@ -220,6 +222,6 @@ on the CIFAR test set.
 ```
 model="models/cifar10/resnet110/noise_0.25/checkpoint.pth.tar"
 output="???"
-python certify.py cifar10 $model 0.25 $output --skip 20 --batch 400
+python code/certify.py cifar10 $model 0.25 $output --skip 20 --batch 400
 ```
 where `???` is your desired output file.

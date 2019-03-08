@@ -155,8 +155,7 @@ space, and `sigma` is the noise hyperparameter &sigma;
 where `n0` is the number of Monte Carlo samples to use for selection (see the paper), `n` is the number of Monte Carlo
 samples to use for estimation, and `alpha` is the confidence level.
 This function will either return the pair `(-1, 0.0)` to abstain, or return a pair
-`(prediction, radius)` for which with probability at least `1 - alpha`, _g(x)_ = `prediction`
- and _g_ is robust around _x_ with radius at least `radius`. 
+`(prediction, radius)`.  The probability that `certify()` will return a class not equal to _g(x)_ is no greater than `alpha`.  Another way to say this is that with probability at least `1 - alpha`, `certify()` will either abstain or return _g(x)_.
  
 ### Scripts
 

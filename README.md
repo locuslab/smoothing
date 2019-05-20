@@ -208,7 +208,7 @@ conda create -n smoothing
 conda activate smoothing
 # below is for linux, with CUDA 10; see https://pytorch.org/ for the correct command for your system
 conda install pytorch torchvision cudatoolkit=10.0 -c pytorch 
-conda install scipy pandas statmodels matplotlib seaborn
+conda install scipy pandas statsmodels matplotlib seaborn
 pip install setGPU
 ```
 3.  Download our trained models from [here](https://drive.google.com/file/d/1h_TpbXm5haY5f-l4--IKylmdz6tvPoR4/view?usp=sharing).
